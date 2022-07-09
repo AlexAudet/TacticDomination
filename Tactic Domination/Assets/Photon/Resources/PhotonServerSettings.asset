@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3758f8f58fdef43803eb9be1df0608, type: 3}
+  m_Name: PhotonServerSettings
+  m_EditorClassIdentifier: 
+  AppID: 60114910-a502-4dc4-aaab-2ba7ced3c50a
+  VoiceAppID: 
+  ChatAppID: 
+  HostType: 1
+  PreferredRegion: 1
+  EnabledRegions: -1
+  Protocol: 0
+  ServerAddress: 
+  ServerPort: 5055
+  VoiceServerPort: 5055
+  JoinLobby: 1
+  EnableLobbyStatistics: 0
+  PunLogging: 0
+  NetworkLogging: 1
+  RunInBackground: 1
+  RpcList:
+  - ChangeTile
+  - Chat
+  - ChooseMinionSpawnTile
+  - ColorRpc
+  - CreateObstacleForAllPlayer
+  - DeleteObstacleForAllPlayer
+  - DestroyRpc
+  - DoJump
+  - Flash
+  - GetDamageForAll
+  - GetMinionForOtherPlayer
+  - GetTileForOtherPlayer
+  - InstantiateRpc
+  - Marco
+  - MinionIsReadyForAll
+  - MoveForAll
+  - PickupItemInit
+  - Polo
+  - PunPickup
+  - PunPickupSimple
+  - PunRespawn
+  - RequestForPickupItems
+  - RequestForPickupTimes
+  - TaggedPlayer
+  - UpdateForAllPlayer
+  - CreateMinion
+  - Dead
+  - NextTurnForAll
+  - RotateMinionForAll
+  - ReplaceMinionForAll
+  - PlayAnimationForAll
+  - RecenterMinionForAll
+  - SetRootMotionForAll
+  - RotateWithLerpForAll
+  - MoveProjectilForAll
+  - GetStundForAll
+  - GetSnearForAll
+  - DestroyTrap
+  - UpdateInfoForAll
+  - GetHealForAll
+  - UpdateStatForPlayer
+  - UpdateTurnCounterForAll
+  - GetBurnForAll
+  - GetFlowerSkinForAll
+  - GetFreezeForAll
+  - GetInvulnerableForAll
+  - GetOverchargeForAll
+  - GetWeakenedForAll
+  - NewTurnForAll
+  - MoveMinionByAttackForAll
+  - TeleportMinionForAll
+  - DestroyObstacle
+  - CameraSakeForAll
+  - SlowMotionForAll
+  - CamZoomForAll
+  - GetSuperForceForAll
+  - EndTurnForAll
+  - InstanciateOnMinionVFXForAll
+  - DeadForAll
+  - InstanciateVFXOnMinionForAll
+  - GetSilenceForAll
+  - InstanciateOnMinionVFX
+  - PlayOnMinionVFXForAll
+  - CloseGlyph
+  - InitiateTrapForAll
+  - DestroyTrapForAll
+  - CloseGlyphForAll
+  - InitiateGlyphForAll
+  - GetEffectByGlyphForAll
+  - CalculStatsForAll
+  - GetEffectForAll
+  - RuneStatBonusForAll
+  - RuneStatsBonusForAll
+  DisableAutoOpenWizard: 1

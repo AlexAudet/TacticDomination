@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef34a28df080094199bcdb3fe511019, type: 3}
+  m_Name: DailyRewardsSettingsData
+  m_EditorClassIdentifier: 
+  allTimerButtons:
+  - buttonID: LootOne
+    hours: 0
+    minutes: 0
+    seconds: 1
+    interactable: 0
+    availableAtStart: 0
+    completeText: Open
+  - buttonID: LootTwo
+    hours: 0
+    minutes: 0
+    seconds: 1
+    interactable: 0
+    availableAtStart: 0
+    completeText: Open
+  - buttonID: LootThree
+    hours: 0
+    minutes: 0
+    seconds: 1
+    interactable: 0
+    availableAtStart: 0
+    completeText: Open
+  - buttonID: LootFour
+    hours: 0
+    minutes: 0
+    seconds: 1
+    interactable: 0
+    availableAtStart: 0
+    completeText: Open
+  calendarPrefab: {fileID: 1869782733140482, guid: 240b7cc0158809f428a13963081ccf6b, type: 3}
+  calendarCanvas: {fileID: 1072201933520926, guid: f0fb663a072a5c345bb1a5426202ac18, type: 3}
+  availableAtStart: 1
+  resetAtEnd: 0
+  hours: 0
+  minutes: 0
+  seconds: 10
+  allDays:
+  - rewardType: 0
+    key: 
+    rewardValue: 200
+  - rewardType: 0
+    key: 
+    rewardValue: 300
+  - rewardType: 1
+    key: 
+    rewardValue: 400
+  - rewardType: 0
+    key: 
+    rewardValue: 500
+  - rewardType: 1
+    key: 
+    rewardValue: 600
+  - rewardType: 0
+    key: 
+    rewardValue: 700
+  - rewardType: 1
+    key: 
+    rewardValue: 800
+  usePlaymaker: 0
+  useBolt: 0

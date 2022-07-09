@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a35672cd5e63546aa4f24d4da7b782, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  minionsDeck:
+  - minion: {fileID: 932337647487497021, guid: 7a7b083675cb0bc44a4be6a9748f6367, type: 3}
+    level: 1
+    runes:
+    - {fileID: 11400000, guid: f72befb4321dd3646b5049bbe02acd14, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+  - minion: {fileID: 932337647487497021, guid: cc2a90cc78e1981469687b9cb666891f, type: 3}
+    level: 2
+    runes:
+    - {fileID: 11400000, guid: f8761582c49aefe4d9d3a2c4a7b395d3, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+  - minion: {fileID: 932337647487497021, guid: fb52649aa771ac34e81ddf28ddd1975e, type: 3}
+    level: 3
+    runes:
+    - {fileID: 11400000, guid: f72befb4321dd3646b5049bbe02acd14, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+  allMinions:
+  - minion: {fileID: 0}
+    level: 0
+    minionAmount: 0
+  allRune:
+  - {fileID: 11400000, guid: f72befb4321dd3646b5049bbe02acd14, type: 2}
+  - {fileID: 11400000, guid: f8761582c49aefe4d9d3a2c4a7b395d3, type: 2}

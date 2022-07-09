@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 155f35a9aa9428946a333d1f7f0ad471
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _PolygonNature_01: {fileID: 2800000, guid: 2edd58f7c433e934db9029c375173b44, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
