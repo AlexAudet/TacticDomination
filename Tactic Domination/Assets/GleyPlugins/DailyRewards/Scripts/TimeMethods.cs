@@ -30,14 +30,41 @@
         /// <returns></returns>
         public static DateTime LoadTime(string saveName)
         {
-            if (!PlayerPrefs.HasKey(saveName))
+            long temp = 0;
+
+            if (saveName == "LootOne" && PlayFabManager.Instance.Player_FirstLootSavedTime != null)
+            {
+                string[] chestInventoryString = PlayFabManager.Instance.Player_FirstLootSavedTime.Split('%');
+                temp = Convert.ToInt64(chestInventoryString[0]);
+            }
+            
+            if (saveName == "LootTwo" && PlayFabManager.Instance.Player_SecondLootSavedTime != null)
+            {
+                string[] chestInventoryString = PlayFabManager.Instance.Player_SecondLootSavedTime.Split('%');
+                temp = Convert.ToInt64(chestInventoryString[0]);
+            }
+
+            if (saveName == "LootThree" && PlayFabManager.Instance.Player_ThirdLootSavedTime != null)
+            {
+                string[] chestInventoryString = PlayFabManager.Instance.Player_ThirdLootSavedTime.Split('%');
+                temp = Convert.ToInt64(chestInventoryString[0]);
+            }
+
+            if (saveName == "LootFour" && PlayFabManager.Instance.Player_FourthLootSavedTime != null)
+            {
+                string[] chestInventoryString = PlayFabManager.Instance.Player_FourthLootSavedTime.Split('%');
+                temp = Convert.ToInt64(chestInventoryString[0]);
+            }
+  
+
+            if (temp == 0)
             {
                 SaveTime(saveName);
                 return DateTime.Now;
             }
             else
-            {     
-                long temp = Convert.ToInt64(PlayerPrefs.GetString(saveName));
+            {
+               // long temp = Convert.ToInt64(PlayerPrefs.GetString(saveName));
                 return DateTime.FromBinary(temp);
             }
         }
@@ -45,10 +72,20 @@
 
         public static void ResetTime(string saveName)
         {
-            if (PlayerPrefs.HasKey(saveName))
-            {
-                PlayerPrefs.DeleteKey(saveName);
-            }
+
+            if (saveName == "LootOne")
+                PlayFabManager.Instance.Player_FirstLootSavedTime = DateTime.Now.ToBinary().ToString();
+            if (saveName == "LootTwo")
+                PlayFabManager.Instance.Player_SecondLootSavedTime = DateTime.Now.ToBinary().ToString();
+            if (saveName == "LootThree")
+                PlayFabManager.Instance.Player_ThirdLootSavedTime = DateTime.Now.ToBinary().ToString();
+            if (saveName == "LootFour")
+                PlayFabManager.Instance.Player_FourthLootSavedTime = DateTime.Now.ToBinary().ToString();
+
+          // if (PlayerPrefs.HasKey(saveName))
+          // {
+          //     PlayerPrefs.DeleteKey(saveName);
+          // }
         }
 
 
@@ -58,22 +95,21 @@
         /// <param name="saveName"></param>
         public static void SaveTime(string saveName)
         {
-            PlayerPrefs.SetString(saveName, DateTime.Now.ToBinary().ToString());
-            PlayerPrefs.Save();
+            if (saveName == "LootOne")
+                PlayFabManager.Instance.Player_FirstLootSavedTime = DateTime.Now.ToBinary().ToString() + "%" + ChestLootManager.instance.firstLootButton.chest.chestType.ToString();
+            if (saveName == "LootTwo")
+                PlayFabManager.Instance.Player_SecondLootSavedTime = DateTime.Now.ToBinary().ToString() + "%" + ChestLootManager.instance.secondLootButton.chest.chestType.ToString();
+            if (saveName == "LootThree")
+                PlayFabManager.Instance.Player_ThirdLootSavedTime = DateTime.Now.ToBinary().ToString() + "%" + ChestLootManager.instance.thirdLootButton.chest.chestType.ToString();
+            if (saveName == "LootFour")
+                PlayFabManager.Instance.Player_FourthLootSavedTime = DateTime.Now.ToBinary().ToString() + "%" + ChestLootManager.instance.fourthLootButton.chest.chestType.ToString();
+
+
+           // PlayerPrefs.SetString(saveName, DateTime.Now.ToBinary().ToString());
+           // PlayerPrefs.Save();
         }
 
-      
-
-        //  private static void SaveFailed(PlayFabError error)
-        //  {
-        //      PlayFabManager.Instance.LoadingMessage(error.ErrorMessage);
-        //      PlayFabManager.Instance.HideLoading();
-        //  }
-        //
-        //  private static void SaveSuccess(UpdateUserDataResult obj)
-        //  {
-        //      throw new NotImplementedException();
-        //  }
+     
 
         /// <summary>
         /// Save the remaining time

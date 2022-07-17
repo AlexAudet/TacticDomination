@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 public class MinionInventory : MonoBehaviour
 {
@@ -26,11 +27,12 @@ public class MinionInventory : MonoBehaviour
 
 
     public List<MinionData> minionInventory = new List<MinionData>();
-    public List<MinionData[]> allDecks = new List<MinionData[]>();
-    MinionData[] firstDeck = new MinionData[3];
-    MinionData[] secondDeck = new MinionData[3];
-    MinionData[] thirdDeck = new MinionData[3];
-    [HideInInspector]
+    [ShowInInspector]
+    public List<string[]> allDecks = new List<string[]>();
+    string[] firstDeck = new string[3];
+    string[] secondDeck = new string[3];
+    string[] thirdDeck = new string[3];
+
     public int Player_Deck;
 
 
@@ -57,9 +59,9 @@ public class MinionInventory : MonoBehaviour
 
             Player_Deck = int.Parse(minionsInventoryString[0]);
 
-            List<MinionData> deckOneList = new List<MinionData>();
-            List<MinionData> deckTwoList = new List<MinionData>();
-            List<MinionData> deckThirdList = new List<MinionData>();
+            List<string> deckOneList = new List<string>();
+            List<string> deckTwoList = new List<string>();
+            List<string> deckThirdList = new List<string>();
 
             foreach (var item in DataHolder.Instance.allMinions)
             {
@@ -81,19 +83,19 @@ public class MinionInventory : MonoBehaviour
                             if (minionsInventoryString[i].Contains("DECK1"))
                             {
                                 newMinionData.deckIndex.Add(1);
-                                deckOneList.Add(newMinionData);
+                                deckOneList.Add(newMinionData.minionKey);
                             }
 
                             if (minionsInventoryString[i].Contains("DECK2"))
                             {
                                 newMinionData.deckIndex.Add(2);
-                                deckTwoList.Add(newMinionData);
+                                deckTwoList.Add(newMinionData.minionKey);
                             }
 
                             if (minionsInventoryString[i].Contains("DECK3"))
                             {
                                 newMinionData.deckIndex.Add(3);
-                                deckThirdList.Add(newMinionData);
+                                deckThirdList.Add(newMinionData.minionKey);
                             }
 
                         }
@@ -213,14 +215,30 @@ public class MinionInventory : MonoBehaviour
             {
                 if(i != 0)
                 {
-                    if (allDecks[i][j] != null)
-                        if (!allDecks[i][j].deckIndex.Contains(Player_Deck))
-                            allDecks[i][j].inventoryCard.ActiveEquipedBanner(false);
+                    MinionData newData = null;
+                    foreach (var data in minionInventory)
+                        if (allDecks[i][j] == data.minionKey)
+                        {
+                            newData = data;
+                            break;
+                        }
+
+                    if (newData != null)
+                        if (!newData.deckIndex.Contains(Player_Deck))
+                            newData.inventoryCard.ActiveEquipedBanner(false);
                 }
                 else
                 {
-                    if (allDecks[i][j] != null)
-                        allDecks[i][j].inventoryCard.ActiveEquipedBanner(true);
+                    MinionData newData = null;
+                    foreach (var data in minionInventory)
+                        if (allDecks[i][j] == data.minionKey)
+                        {
+                            newData = data;
+                            break;
+                        }
+
+                    if (newData != null)
+                        newData.inventoryCard.ActiveEquipedBanner(true);
                 }
             }
         }
@@ -239,25 +257,43 @@ public class MinionInventory : MonoBehaviour
         deckHolderOne.gameObject.SetActive(true);
         deckHolderTwo.gameObject.SetActive(false);
         deckHolderThree.gameObject.SetActive(false);
+
+        currentMinionCard = null;
     }
     public void SelectSecondDeck()
     {
-      Player_Deck = 2;
+        Player_Deck = 2;
 
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
             {
                 if (i != 1)
-                {  
-                    if (allDecks[i][j] != null)
-                      if (!allDecks[i][j].deckIndex.Contains(Player_Deck))
-                         allDecks[i][j].inventoryCard.ActiveEquipedBanner(false);
+                {
+                    MinionData newData = null;
+                    foreach (var data in minionInventory)
+                        if (allDecks[i][j] == data.minionKey)
+                        {
+                            newData = data;
+                            break;
+                        }
+
+                    if (newData != null)
+                      if (!newData.deckIndex.Contains(Player_Deck))
+                            newData.inventoryCard.ActiveEquipedBanner(false);
                 }
                 else
                 {
+                    MinionData newData = null;
+                    foreach (var data in minionInventory)
+                        if (allDecks[i][j] == data.minionKey)
+                        {
+                            newData = data;
+                            break;
+                        }
+
                     if (allDecks[i][j] != null)
-                        allDecks[i][j].inventoryCard.ActiveEquipedBanner(true);
+                        newData.inventoryCard.ActiveEquipedBanner(true);
                 }
             }
         }
@@ -276,6 +312,8 @@ public class MinionInventory : MonoBehaviour
         deckHolderOne.gameObject.SetActive(false);
         deckHolderTwo.gameObject.SetActive(true);
         deckHolderThree.gameObject.SetActive(false);
+
+        currentMinionCard = null;
     }
     public void SelectThirdDeck()
     {
@@ -288,15 +326,31 @@ public class MinionInventory : MonoBehaviour
             {
                 if (i != 2)
                 {
-                    if (allDecks[i][j] != null)
-                        if (!allDecks[i][j].deckIndex.Contains(Player_Deck))
-                            allDecks[i][j].inventoryCard.ActiveEquipedBanner(false);
+                    MinionData newData = null;
+                    foreach (var data in minionInventory)
+                        if (allDecks[i][j] == data.minionKey)
+                        {
+                            newData = data;
+                            break;
+                        }
+
+                    if (newData != null)
+                        if (!newData.deckIndex.Contains(Player_Deck))
+                            newData.inventoryCard.ActiveEquipedBanner(false);
 
                 }
                 else
                 {
-                    if (allDecks[i][j] != null)
-                        allDecks[i][j].inventoryCard.ActiveEquipedBanner(true);
+                    MinionData newData = null;
+                    foreach (var data in minionInventory)
+                        if (allDecks[i][j] == data.minionKey)
+                        {
+                            newData = data;
+                            break;
+                        }
+
+                    if (newData != null)
+                        newData.inventoryCard.ActiveEquipedBanner(true);
                 }
             }
         }
@@ -315,6 +369,8 @@ public class MinionInventory : MonoBehaviour
         deckHolderOne.gameObject.SetActive(false);
         deckHolderTwo.gameObject.SetActive(false);
         deckHolderThree.gameObject.SetActive(true);
+
+        currentMinionCard = null;
     }
 
 

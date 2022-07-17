@@ -35,7 +35,17 @@ public class EquipMinionSelector : MonoBehaviour
         foreach (var item in MinionInventory.Instance.allDecks[MinionInventory.Instance.Player_Deck - 1])
         {
             MinionCard newCard = null;
-            switch (item.minion.rarety)
+            MinionData newData = null;
+
+            foreach (var data in MinionInventory.Instance.minionInventory)
+                if(item == data.minionKey)
+                {
+                    newData = data;
+                    break;
+                }
+             
+               
+            switch (newData.minion.rarety)
             {
                 case Minion.MinonRarety.Common:
                     newCard = Instantiate(MinionInventory.Instance.commonMinionCard);
@@ -50,30 +60,36 @@ public class EquipMinionSelector : MonoBehaviour
                     break;
             }
 
-            newCard.InitiateCard(item, cardHolder, MinionCard.CardType.ChangeMinion);
+            newCard.InitiateCard(newData, cardHolder, MinionCard.CardType.ChangeMinion);
         }  
     }
 
     public void ChangeMinionInDeck(MinionData minionToChangeInDeck)
     {
+        Debug.Log(minionToChangeInDeck);
+        Debug.Log(minionToChangeInDeck.deckCard[MinionInventory.Instance.Player_Deck -1]);
         Transform parentTransform = minionToChangeInDeck.deckCard[MinionInventory.Instance.Player_Deck -1].transform.parent;
         int index = minionToChangeInDeck.deckCard[MinionInventory.Instance.Player_Deck - 1].transform.GetSiblingIndex();
 
         minionToChangeInDeck.deckIndex.Remove(MinionInventory.Instance.Player_Deck);     
         minionData.deckIndex.Add(MinionInventory.Instance.Player_Deck);
-        minionData.deckCard = minionToChangeInDeck.deckCard;
+
+        //minionData.deckCard = minionToChangeInDeck.deckCard;
+
         minionData.inventoryCard.ActiveEquipedBanner(true);
         minionToChangeInDeck.inventoryCard.ActiveEquipedBanner(false);
-        MinionInventory.Instance.allDecks[MinionInventory.Instance.Player_Deck - 1][index] = minionData;
+
+
+        MinionInventory.Instance.allDecks[MinionInventory.Instance.Player_Deck - 1][index] = minionData.minionKey;
 
   
         Destroy(minionToChangeInDeck.deckCard[MinionInventory.Instance.Player_Deck - 1].gameObject);
-        minionToChangeInDeck.deckCard = null;
+      //  minionToChangeInDeck.deckCard = null;
 
         MinionCard newCard = Instantiate(minionData.inventoryCard);
         newCard.CloseClickMenu();
         minionData.inventoryCard.CloseClickMenu();
-        newCard.InitiateCard(minionData, parentTransform, MinionCard.CardType.Deck, MinionInventory.Instance.Player_Deck);
+        newCard.InitiateCard(minionData, parentTransform, MinionCard.CardType.Deck, whichDeck : MinionInventory.Instance.Player_Deck);
         newCard.transform.SetSiblingIndex(index);
 
         CloseMinionSelector();

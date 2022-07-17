@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System;
 
 public class PlayFabManager : MonoBehaviour
 {
@@ -264,44 +266,13 @@ public class PlayFabManager : MonoBehaviour
     }
     public void CreateChestFENData()
     {
-
         string chestData = ChestLootManager.instance.ChestData[0].chestAmount.ToString() 
             + "/" + ChestLootManager.instance.ChestData[1].chestAmount.ToString() 
             + "/" + ChestLootManager.instance.ChestData[2].chestAmount.ToString() 
             + "/" + ChestLootManager.instance.ChestData[3].chestAmount.ToString();
 
 
-        if (ChestLootManager.instance.firstLootButton.chest != null)
-            Player_FirstLootSavedTime = GleyDailyRewards.TimeMethods.LoadTime
-                (ChestLootManager.instance.firstLootButton.buttonID.ToString()).ToBinary() + "%"
-                + ChestLootManager.instance.firstLootButton.chest.chestType.ToString();
-        //  else
-        //      Player_FirstLootSavedTime = null;
-
-        if (ChestLootManager.instance.secondLootButton.chest != null)
-            Player_SecondLootSavedTime = GleyDailyRewards.TimeMethods.LoadTime
-                (ChestLootManager.instance.secondLootButton.buttonID.ToString()).ToBinary() + "%"
-                + ChestLootManager.instance.secondLootButton.chest.chestType.ToString();
-        //  else
-        //      Player_SecondLootSavedTime = null;
-
-        if (ChestLootManager.instance.thirdLootButton.chest != null)
-            Player_ThirdLootSavedTime = GleyDailyRewards.TimeMethods.LoadTime
-                (ChestLootManager.instance.thirdLootButton.buttonID.ToString()).ToBinary() + "%"
-                + ChestLootManager.instance.thirdLootButton.chest.chestType.ToString();
-        //  else
-        //      Player_ThirdLootSavedTime = null;
-
-        if (ChestLootManager.instance.fourthLootButton.chest != null)
-            Player_FourthLootSavedTime = GleyDailyRewards.TimeMethods.LoadTime
-                (ChestLootManager.instance.fourthLootButton.buttonID.ToString()).ToBinary() + "%"
-                + ChestLootManager.instance.fourthLootButton.chest.chestType.ToString();
-        // else
-        //     Player_FourthLootSavedTime = null;
-
-
         WriteChestData(chestData);
-
     }
 
     void WriteMinionData(string fen)
@@ -349,8 +320,8 @@ public class PlayFabManager : MonoBehaviour
     private void WriteDataSuccess(UpdateUserDataResult result)
     {
 
-        LoadingMessage("Updateting Data...");
-        HideLoading();
+        //LoadingMessage("Updateting Data...");
+        //HideLoading();
     }
 }
 

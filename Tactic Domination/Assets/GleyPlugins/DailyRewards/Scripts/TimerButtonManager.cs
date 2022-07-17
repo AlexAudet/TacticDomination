@@ -96,17 +96,15 @@
                         }
                     }
 
-                    if (savedTime != "")
+                    if (savedTime != null)
                     {
-                        Debug.Log(1);
-                        Debug.Log(DateTime.FromBinary(Convert.ToInt64(savedTime)));
+                   
                         currentTimer.savedTime = DateTime.FromBinary(Convert.ToInt64(savedTime));
                         //currentTimer.savedTime = TimeMethods.LoadTime(buttonSettings.buttonID);
                     }
                     else
                     {
-                        Debug.Log(2);
-                        Debug.Log(DateTime.Now);
+       
                         currentTimer.savedTime = DateTime.Now;
                     }
                   
@@ -189,6 +187,13 @@
                 return string.Format("{0:D2}:{1:D2}:{2:D2}", (int)difference.TotalHours, difference.Minutes, difference.Seconds);
             }
             return string.Format("{0:D2}:{1:D2}:{2:D2}", difference.Hours, difference.Minutes, difference.Seconds);
+        }
+
+        public Vector2 GetTimeLeft(TimerButtonIDs buttonID)
+        {
+            TimeSpan difference = GetRemainingTimeSpan(buttonID);
+
+            return new Vector2((int)difference.TotalHours, (int)difference.Minutes);
         }
 
 

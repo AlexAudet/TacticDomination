@@ -48,7 +48,8 @@
             iconChest.transform.parent.gameObject.SetActive(true);
             openCostText.transform.parent.gameObject.SetActive(true);
 
-            //iconChest.sprite = chestData.chestSprite;
+            if(chestData.chestSprite != null)
+                iconChest.sprite = chestData.chestSprite;
         }
 
 
@@ -91,6 +92,14 @@
         {
             buttonText.text = TimerButtonManager.Instance.GetRemainingTime(buttonID);
 
+            float gemCost = (ChestLootManager.instance.GemAmountPerHour * TimerButtonManager.Instance.GetTimeLeft(buttonID).x) 
+                + (TimerButtonManager.Instance.GetTimeLeft(buttonID).y * ChestLootManager.instance.GemAmountPerHour) / 60;
+
+            if (gemCost < ChestLootManager.instance.GemAmountPerHour)
+                gemCost = ChestLootManager.instance.GemAmountPerHour;
+
+            openCostText.text = Mathf.FloorToInt(gemCost).ToString();
+
             if (TimerButtonManager.Instance.TimeExpired(buttonID))
             {
                 buttonText.text = completeText;
@@ -104,8 +113,6 @@
         }
 
         
-
-
         /// <summary>
         /// Listener triggered when button is clicked
         /// </summary>

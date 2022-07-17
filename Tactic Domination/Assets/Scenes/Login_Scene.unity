@@ -1455,24 +1455,84 @@ MonoBehaviour:
   - chestAmount: 0
     chestSprite: {fileID: 0}
     chestType: 0
+    chanceToLootCoin: 53
+    coinLoots:
+    - minionKey: 
+      value: 100
+      chance: 90
+    - minionKey: 
+      value: 200
+      chance: 70
+    - minionKey: 
+      value: 300
+      chance: 60
+    - minionKey: 
+      value: 400
+      chance: 40
+    - minionKey: 
+      value: 500
+      chance: 20
+    - minionKey: 
+      value: 600
+      chance: 10
+    oneMinonAmount: 30
+    twoMinonAmount: 15
+    threeMinonAmount: 10
+    minionLoot:
+    - minionKey: AAA
+      value: 0
+      chance: 90
+    - minionKey: BBB
+      value: 0
+      chance: 0
+    - minionKey: CCC
+      value: 0
+      chance: 70
+    - minionKey: DDD
+      value: 0
+      chance: 0
+    - minionKey: EEE
+      value: 0
+      chance: 50
+    - minionKey: FFF
+      value: 0
+      chance: 30
     Hour: 0
-    Minute: 6
+    Minute: 0
     Second: 5
   - chestAmount: 0
     chestSprite: {fileID: 0}
     chestType: 1
+    chanceToLootCoin: 0
+    coinLoots: []
+    oneMinonAmount: 30
+    twoMinonAmount: 15
+    threeMinonAmount: 10
+    minionLoot: []
     Hour: 0
     Minute: 6
     Second: 10
   - chestAmount: 0
     chestSprite: {fileID: 0}
     chestType: 2
+    chanceToLootCoin: 0
+    coinLoots: []
+    oneMinonAmount: 30
+    twoMinonAmount: 15
+    threeMinonAmount: 10
+    minionLoot: []
     Hour: 0
     Minute: 6
     Second: 15
   - chestAmount: 0
     chestSprite: {fileID: 0}
     chestType: 3
+    chanceToLootCoin: 0
+    coinLoots: []
+    oneMinonAmount: 30
+    twoMinonAmount: 15
+    threeMinonAmount: 10
+    minionLoot: []
     Hour: 0
     Minute: 6
     Second: 20
